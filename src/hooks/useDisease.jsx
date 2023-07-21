@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 const diseaseInfo = [
   {
+    id: 0,
     name: "Melanocytic nevi",
     description:
       "Melanocytic nevi, commonly known as moles, are noncancerous growths on the skin that develop when pigment cells (melanocytes) grow in clusters.",
@@ -21,6 +22,7 @@ const diseaseInfo = [
     ],
   },
   {
+    id: 1,
     name: "Melanoma",
     description:
       "Melanoma is a type of skin cancer that develops from pigment-containing cells called melanocytes.",
@@ -42,6 +44,7 @@ const diseaseInfo = [
     ],
   },
   {
+    id: 2,
     name: "Benign keratosis-like lesions",
     description:
       "Benign keratosis-like lesions are growths on the skin that are not cancerous but may resemble skin cancer.",
@@ -61,6 +64,7 @@ const diseaseInfo = [
     ],
   },
   {
+    id: 3,
     name: "Basal cell carcinoma",
     description:
       "Basal cell carcinoma is a type of skin cancer that begins in the basal cells, which produce new skin cells as old ones die off.",
@@ -83,6 +87,7 @@ const diseaseInfo = [
     ],
   },
   {
+    id: 4,
     name: "Actinic keratoses",
     description:
       "Actinic keratoses are scaly, crusty growths (lesions) caused by damage from exposure to ultraviolet (UV) radiation.",
@@ -105,59 +110,100 @@ const diseaseInfo = [
     ],
   },
   {
-    name: "Vascular lesions",
+    id: 5,
+    name: "Squamous cell carcinoma",
     description:
-      "Vascular lesions are abnormalities of the blood vessels that can appear as birthmarks, hemangiomas, or port-wine stains.",
-    causes: ["Genetics", "Unknown"],
-    symptoms: [
-      "Red or purple discoloration of the skin",
-      "May be flat or raised",
-      "May be painful or itchy",
+      "Squamous cell carcinoma is a type of skin cancer that begins in the squamous cells, which are found in the upper layer of the skin.",
+    causes: [
+      "Exposure to UV light",
+      "Previous radiation therapy",
+      "Weakened immune system",
     ],
-    treatments: ["Laser therapy", "Surgical removal", "Topical medications"],
+    symptoms: [
+      "A firm, red nodule",
+      "A flat lesion with a scaly, crusted surface",
+      "A new sore or raised area on an old scar or ulcer",
+    ],
+    treatments: [
+      "Surgical removal",
+      "Curettage and electrodesiccation",
+      "Mohs surgery",
+      "Radiation therapy",
+      "Topical medications",
+      "Chemotherapy",
+    ],
     references: [
-      "https://www.mayoclinic.org/diseases-conditions/birthmarks/symptoms-causes/syc-20355939",
-      "https://www.aad.org/public/diseases/birthmarks/vascular-birthmarks",
+      "https://www.mayoclinic.org/diseases-conditions/squamous-cell-carcinoma/symptoms-causes/syc-20352487",
+      "https://www.aad.org/public/diseases/skin-cancer/squamous-cell-carcinoma",
     ],
   },
   {
-    name: "Dermatofibroma",
+    id: 6,
+    name: "Rosacea",
     description:
-      "Dermatofibroma is a common skin growth that usually appears on the lower legs, but may appear anywhere on the body.",
-    causes: ["Unknown"],
-    symptoms: [
-      "Small, firm, raised bump on the skin",
-      "May be red, brown, or pink in color",
-      "May itch or be tender",
-    ],
-    treatments: [
-      "No treatment necessary in most cases",
-      "Surgical removal if necessary for cosmetic reasons or if the lesion changes in size or appearance",
-    ],
+      "Rosacea is a common skin condition that causes redness, visible blood vessels, and small, red, pus-filled bumps on the face.",
+    causes: ["Genetics", "Environmental factors", "Skin mites"],
+    symptoms: ["Facial redness", "Swollen red bumps", "Eye problems"],
+    treatments: ["Topical medications", "Oral antibiotics", "Laser therapy"],
     references: [
-      "https://www.mayoclinic.org/diseases-conditions/dermatofibroma/symptoms-causes/syc-20371738",
-      "https://www.aad.org/public/diseases/bumps-and-growths/dermatofibromas",
+      "https://www.mayoclinic.org/diseases-conditions/rosacea/symptoms-causes/syc-20353815",
+      "https://www.aad.org/public/diseases/acne-and-rosacea/rosacea",
+    ],
+  },
+  {
+    id: 7,
+    name: "Eczema",
+    description:
+      "Eczema, also known as atopic dermatitis, is a common skin condition characterized by dry, red, itchy, and inflamed skin.",
+    causes: ["Genetics", "Environmental factors", "Abnormal immune system"],
+    symptoms: [
+      "Dry, scaly skin",
+      "Redness and inflammation",
+      "Intense itching",
+    ],
+    treatments: ["Topical medications", "Oral medications", "Light therapy"],
+    references: [
+      "https://www.mayoclinic.org/diseases-conditions/atopic-dermatitis-eczema/symptoms-causes/syc-20353273",
+      "https://www.aad.org/public/diseases/eczema",
+    ],
+  },
+  {
+    id: 8,
+    name: "Psoriasis",
+    description:
+      "Psoriasis is a chronic autoimmune condition that causes skin cells to grow too quickly, resulting in red, scaly, and sometimes painful patches on the skin.",
+    causes: ["Genetics", "Environmental factors", "Abnormal immune system"],
+    symptoms: [
+      "Red patches of skin",
+      "Silvery scales on the skin",
+      "Dry and cracked skin",
+    ],
+    treatments: ["Topical medications", "Oral medications", "Light therapy"],
+    references: [
+      "https://www.mayoclinic.org/diseases-conditions/psoriasis/symptoms-causes/syc-20355840",
+      "https://www.aad.org/public/diseases/scaly-skin/psoriasis",
     ],
   },
 ];
 
-function useDisease({name}) {
-    const [disease, setDisease] = useState({})
-    const [isLoading, setIsLoading] = useState(false);
-    const [error, setError] = useState(null);
-    
-    useEffect(()=>{
-        try {
-            setIsLoading(true)
-            const singleDisease = diseaseInfo.filter((dis)=>dis.name===name)
-            setDisease(singleDisease)
-            setIsLoading(false)
-        } catch (error) {
-            setError(error)
-        }
-    }, disease)    
+function useDisease(id) {
+  const [disease, setDisease] = useState({});
+  const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState(null);
 
-    return [disease, isLoading, error]
+  useEffect(() => {
+    try {
+      setIsLoading(true);
+      const singleDisease = diseaseInfo.filter((dis) => dis.id == id);
+      setDisease(singleDisease);
+      console.log("useDisease ",disease,singleDisease, ",id:", id)
+      setIsLoading(false);
+    } catch (error) {
+      setError(error);
+    }
+  }, []);
+
+  return [disease, isLoading, error];
 }
 
 export default useDisease;

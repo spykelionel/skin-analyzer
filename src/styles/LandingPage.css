@@ -4,7 +4,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  /* height: 100vh; */
 }
 
 .landing-page .heading-primary {
@@ -28,6 +28,30 @@
   padding: 10px;
   border-radius: 5px;
 }
+.landing-page .prediction {
+  color: green;
+}
+
+.landing-page .prediction .prediction-detail > span {
+  color: #ff69b4;
+}
+
+.landing-page .prediction .prediction-detail {
+  font-size: 24px;
+}
+
+.landing-page .prediction {
+  padding: 20px;
+  margin: 10px;
+  background-color: #fff;
+  box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+}
+
+.landing-page .prediction h2{
+  text-align: center;
+  color: #333;
+}
 
 .landing-page input[type="file"] {
   font-size: 18px;
@@ -39,7 +63,8 @@
   margin-bottom: 20px;
 }
 
-.landing-page button[type="submit"] {
+.landing-page button[type="submit"],
+.landing-page button[type="button"] {
   font-size: 24px;
   padding: 10px 20px;
   border: none;
@@ -50,6 +75,7 @@
   transition: all 0.2s ease-in-out;
 }
 
-.landing-page button[type="submit"]:hover {
-  background-color: #ff6da0;
+.landing-page button[type="submit"]:hover,
+.landing-page button[type="button"]:hover {
+  background-color: #e64e83;
 }

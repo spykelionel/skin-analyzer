@@ -1,11 +1,11 @@
 import React from 'react';
-import './DiseaseInfoPage.css';
+import '../styles/DiseaseInfoPage.css';
 
 const DiseaseInfoPage = ({ disease }) => {
   return (
     <div className="disease-info-page">
-      <h1 className="heading-primary">{disease.name}</h1>
-      <h2 className="subheading-primary">What is {disease.name}?</h2>
+      <h1 className="heading-primary">{disease.name} - {disease.commonName}</h1>
+      <h2 className="subheading-primary-what">What is <span>{disease.name}?</span></h2>
       <p className="text-primary">{disease.description}</p>
       <h2 className="subheading-primary">Symptoms:</h2>
       <ul className="list-unstyled">
@@ -26,7 +26,10 @@ const DiseaseInfoPage = ({ disease }) => {
       <h2 className="subheading-primary">References:</h2>
       <ul className="list-unstyled">
         {disease.references.map((reference, index) => (
-          <li key={index} className="list-unstyled__item">{referenceFD}</li>
+          <>
+          {/* {reference.split(":")[1].trim()} */}
+          <li key={index} className="list-unstyled__item"><a href={reference.split(': ')[1]??`https://www.google.com/search?q=${disease.name}`}>{disease.name}</a></li>
+          </>
         ))}
       </ul>
     </div>

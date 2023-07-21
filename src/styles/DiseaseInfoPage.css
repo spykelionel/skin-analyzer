@@ -1,7 +1,7 @@
 /* DiseaseInfoPage styles */
 .disease-info-page {
   max-width: 800px;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   padding: 20px;
   background-color: #fff;
   box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
@@ -17,7 +17,15 @@
 .disease-info-page .subheading-primary {
   font-size: 24px;
   margin-bottom: 20px;
-  color: #333;
+  color: #ff69b4;
+}
+.disease-info-page .subheading-primary-what {
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.disease-info-page .subheading-primary-what > span {
+  color: #ff69b4;
 }
 
 .disease-info-page .text-primary {
@@ -31,16 +39,18 @@
 }
 
 .disease-info-page .list-unstyled li:before {
-  content: "•";
+  content: "*";
   color: #ff69b4;
   font-weight: bold;
   display: inline-block;
   width: 1em;
-  margin-left: -1em;
+  align-self: center;
+  /* margin-left: -1em; */
 }
 
 .disease-info-page .list-unstyled li {
   font-size: 18px;
   color: #666;
   margin-bottom: 5px;
+  align-self: center;
 }

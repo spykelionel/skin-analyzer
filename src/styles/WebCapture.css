@@ -1,0 +1,9 @@
+.camera-input {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.camera-input button {
+  margin-left: 10px; /* Add some space between the camera icon and the button */
+}
